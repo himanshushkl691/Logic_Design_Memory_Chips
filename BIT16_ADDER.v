@@ -1,0 +1,23 @@
+module BIT16_ADDER(carry,s,a,b,cin);
+input[15:0]a,b;
+input cin;
+output carry;
+output[15:0]s;
+wire c,d,e,f,g,h,i,j,k,l,m,n,o,p,q;
+FULL_ADDER fa1(c,s[0],a[0],b[0],cin);
+FULL_ADDER fa2(d,s[1],a[1],b[1],c);
+FULL_ADDER fa3(e,s[2],a[2],b[2],d);
+FULL_ADDER fa4(f,s[3],a[3],b[3],e);
+FULL_ADDER fa5(g,s[4],a[4],b[4],f);
+FULL_ADDER fa6(h,s[5],a[5],b[5],g);
+FULL_ADDER fa7(i,s[6],a[6],b[6],h);
+FULL_ADDER fa8(j,s[7],a[7],b[7],i);
+FULL_ADDER fa9(k,s[8],a[8],b[8],j);
+FULL_ADDER fa10(l,s[9],a[9],b[9],k);
+FULL_ADDER fa11(m,s[10],a[10],b[10],l);
+FULL_ADDER fa12(n,s[11],a[11],b[11],m);
+FULL_ADDER fa13(o,s[12],a[12],b[12],n);
+FULL_ADDER fa14(p,s[13],a[13],b[13],o);
+FULL_ADDER fa15(q,s[14],a[14],b[14],p);
+FULL_ADDER fa16(carry,s[15],a[15],b[15],q);
+endmodule

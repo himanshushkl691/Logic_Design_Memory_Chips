@@ -1,0 +1,23 @@
+module RAM64(out,en,clk,address,in,rw);
+input[15:0]in;
+input[5:0]address;
+input rw,en,clk;
+output[15:0]out;
+wire en0,en1,en2,en3,msb5,msb4;
+wire[3:0]rest0;
+wire[15:0]out0,out1,out2,out3,out4,out5;
+BUFFER buff0(msb5,address[5]);
+BUFFER buff1(msb4,address[4]);
+BUFFER buff2(rest0[3],address[3]);
+BUFFER buff3(rest0[2],address[2]);
+BUFFER buff4(rest0[1],address[1]);
+BUFFER buff5(rest0[0],address[0]);
+DEMUX_4WAY demux1(en0,en1,en2,en3,msb5,msb4,en);
+RAM16 ram1(out0,en0,clk,rest0,in,rw);
+RAM16 ram2(out1,en1,clk,rest0,in,rw);
+RAM16 ram3(out2,en2,clk,rest0,in,rw);
+RAM16 ram4(out3,en3,clk,rest0,in,rw);
+OR_16_BIT_GATE or1(out4,out0,out1);
+OR_16_BIT_GATE or2(out5,out2,out4);
+OR_16_BIT_GATE or3(out,out3,out5);
+endmodule
